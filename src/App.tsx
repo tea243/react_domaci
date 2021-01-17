@@ -1,25 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
-
+import Igra from './components/Igra';
+import Navbar from './components/Navbar';
+import Statistika from './components/Statistika';
+export interface Pokusaj {
+  glava: boolean,
+  pogodio: boolean
+}
 function App() {
+  const [pokusaji, setPokusaji] = useState<Pokusaj[]>([]);
+  const dodajPokusaj = (pokusaj: Pokusaj) => {
+    setPokusaji(prev => {
+      return [...prev, pokusaj];
+    })
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+
+      <Switch>
+        <Route path='/statistika'>
+          <Statistika pokusaji={pokusaji} />
+        </Route>
+        <Route path='/'>
+          <Igra sacuvaj={dodajPokusaj} pokusaji={pokusaji} />
+        </Route>
+
+      </Switch>
+
+    </BrowserRouter>
   );
 }
 
