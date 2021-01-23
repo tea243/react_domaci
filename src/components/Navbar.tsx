@@ -5,7 +5,7 @@ export default function Navbar() {
     return (
         <header className="header">
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a className="navbar-brand" href="#">Pismo glava</a>
+                <a className="navbar-brand" >Pismo glava</a>
 
                 <div className="collapse navbar-collapse">
                     <ul className="navbar-nav">

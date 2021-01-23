@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Igra from './components/Igra';
-import Navbar from './components/Navbar';
 import Statistika from './components/Statistika';
 export interface Pokusaj {
   glava: boolean,
@@ -10,6 +9,7 @@ export interface Pokusaj {
 }
 function App() {
   const [pokusaji, setPokusaji] = useState<Pokusaj[]>([]);
+
   const dodajPokusaj = (pokusaj: Pokusaj) => {
     setPokusaji(prev => {
       return [...prev, pokusaj];
@@ -17,7 +17,7 @@ function App() {
   }
   return (
     <BrowserRouter>
-      <Navbar />
+
 
       <Switch>
         <Route path='/statistika'>
